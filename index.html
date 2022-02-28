@@ -15,8 +15,11 @@
     <section>
         <div class="container my-5 text-center"> 
             <h2>Gadget Hunter</h2>
-            <input id="user-input" type="text" name="" id="">
-            <button onclick="loadGadget()">Search</button>
+           <div class="my-4 d-flex container">
+                <input id="user-input" class="form-control me-2" type="search" placeholder="Search Phone by Name" aria-label="Search">
+                <button  onclick="loadGadget()" class="btn btn-outline-success" type="submit">Search</button>
+                
+           </div>
 
             <div class="container my-5">
                 <div id="container" class="row">
