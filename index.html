@@ -14,12 +14,15 @@
    
     <section>
         <div class="container my-5 text-center"> 
-            <h2>Gadget Hunter</h2>
+            <h1 class="text-primary">Gadget Hunter</h1>
             <!-- search  -->
            <div class="my-4 d-flex container">
-                <input id="user-input" class="form-control me-2" type="search" placeholder="Search Phone " aria-label="Search">
-                <button  onclick="loadGadget()" class="btn btn-outline-success" type="submit">Search</button>
+                <input id="user-input" class="form-control me-2 p-3" type="search" placeholder="Search Phone " aria-label="Search">
+                <button  onclick="loadGadget()" class="btn btn-outline-primary p-3" type="submit">Search</button>
                 
+           </div>
+           <div>
+               <img id="spinner" class="mx-auto rounded-3 w-50" src="./images/1uoA.gif" alt="">
            </div>
            <!-- phone details by modal -->
             <div id="modal">
