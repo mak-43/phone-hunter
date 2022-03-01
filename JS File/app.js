@@ -1,7 +1,10 @@
 // search and fetch all phones
+let count=0
+const cartStore=[]
 const loadGadget=()=>{
     document.getElementById('modal').innerHTML=""
     document.getElementById('spinner').style.display='block'
+    
     const input=document.getElementById('user-input').value;
     const searchText=input.toLowerCase()  
     if(searchText.length==0){
@@ -83,11 +86,11 @@ const displayDetails=(d)=>{
                     </div>
                     <div class="modal-body">
                         <h5 class="card-title">${d.name}</h5>
-                        <p><span class="fw-bold">Released Date: </span>${d.releaseDate?d.releaseDate:"has not been released yet"}</p>
+                        <p><span class="fw-bold">Released Date: </span>${d.releaseDate?d.releaseDate:"Has not been released yet"}</p>
                         <h5 class="text-danger">Main Features</h5>
                         <hr>
                         <p><span class="fw-bold">Storage: </span> ${d.mainFeatures.storage}</p>
-                        <p><span class="fw-bold">Chipset: </span> ${d.mainFeatures?.chipSet?d.mainFeatures.chipSet:"not found"}</p>
+                        <p><span class="fw-bold">Chipset: </span> ${d.mainFeatures?.chipSet?d.mainFeatures.chipSet:"Not found"}</p>
                         <p><span class="fw-bold">Display Size: </span> ${d.mainFeatures.displaySize}</p>
                         
                         <p><span class="fw-bold">Sensors: </span> ${d.mainFeatures?.sensors?d.mainFeatures.sensors:"No Sensor"} </p>
@@ -103,22 +106,26 @@ const displayDetails=(d)=>{
                     </div>
                     <div class="modal-footer mx-auto">
                         <button onclick="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="save()">Add to Cart</button>
+                        <button type="button" class="btn btn-primary" onclick="save('${d.name}')">Add to Cart</button>
                     </div>
                 </div>
             </div>  
        `  
       
     modal.appendChild(div) 
+    
+}
+const save=(c)=>{
+    count++
+    cartStore.push(c)
+    console.log(cartStore)
+}
 
+const cart=()=>{
+    console.log(arr)
+    console.log(count)
 }
-const shoppingCart=()=>{
 
-}
-const save=(s)=>{
-    console.log(s)
-}
-const close=(c)=>{
-    console.log(c)
-}
+
+
 
