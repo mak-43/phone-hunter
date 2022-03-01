@@ -18,9 +18,13 @@
             <!-- search  -->
            <div class="my-5 d-flex container search ">
                 <input id="user-input" class="form-control me-2 p-3" type="search" placeholder="Search Phone " aria-label="Search">
-                <button  onclick="loadGadget()" class="btn btn-outline-primary p-3" type="submit">Search</button>
+                <button  onclick="loadGadget()" class="btn btn-outline-primary " type="submit">Search</button>
+                <div></div>
                 <img src="./images/shopping-cart.png" id="cart" onclick="cart()" class="ms-2" alt="">
-                
+                <span id="count" class="mb-1 fs-1">0</span>
+                <ul id="cart-list">
+
+                </ul>
                 
            </div>
            <div>

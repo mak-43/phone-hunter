@@ -1,6 +1,5 @@
 // search and fetch all phones
-let count=0
-const cartStore=[]
+
 const loadGadget=()=>{
     document.getElementById('modal').innerHTML=""
     document.getElementById('spinner').style.display='block'
@@ -105,7 +104,7 @@ const displayDetails=(d)=>{
                         
                     </div>
                     <div class="modal-footer mx-auto">
-                        <button onclick="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                       
                         <button type="button" class="btn btn-primary" onclick="save('${d.name}')">Add to Cart</button>
                     </div>
                 </div>
@@ -115,16 +114,28 @@ const displayDetails=(d)=>{
     modal.appendChild(div) 
     
 }
+// shopping cart 
+let count=0
+const cartStore=[]
 const save=(c)=>{
+    const cartCount=document.getElementById('count')
     count++
+    cartCount.innerText=count
     cartStore.push(c)
-    console.log(cartStore)
+    
 }
 
 const cart=()=>{
-    console.log(arr)
-    console.log(count)
+    const cartList=document.getElementById('cart-list')
+    cartList.textContent=''
+   for(const i of cartStore){
+       const li=document.createElement('li')
+       li.innerText=i
+
+        cartList.appendChild(li)     
+   }  
 }
+
 
 
 
