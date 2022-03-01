@@ -187,11 +187,20 @@ const cart=()=>{
     cartList.textContent=''
    for(const i of cartStore){
        const li=document.createElement('li')
-       li.innerText=i
+       li.innerText=i+"---cancel"
+       li.classList.add('item')
 
         cartList.appendChild(li)     
    }  
+   
+
 }
+document.getElementById('cart-list').addEventListener('click',function(e){
+    const cartCount=document.getElementById('count')
+    e.target.parentNode.removeChild(e.target)
+    count--
+    cartCount.innerText=count
+})
 
 
 
