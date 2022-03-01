@@ -14,11 +14,13 @@
    
     <section>
         <div class="container my-5 text-center"> 
-            <h1 class="text-primary">Gadget Hunter</h1>
+            <h1 class="text-primary ">Gadget Hunter</h1>
             <!-- search  -->
            <div class="my-4 d-flex container">
                 <input id="user-input" class="form-control me-2 p-3" type="search" placeholder="Search Phone " aria-label="Search">
                 <button  onclick="loadGadget()" class="btn btn-outline-primary p-3" type="submit">Search</button>
+                <img src="./images/shopping-cart.png" onclick="shoppingCart()" id="img" alt="">
+                
                 
            </div>
            <div>
@@ -51,7 +53,11 @@
 
             </div>
 
-
+           <!-- More phones -->
+            <div id="showMore"> 
+              <h3 id="result" class="text-danger"></h3>
+              <a href=""id="see-more" class="text-primary">click to see more...</a>
+            </div>
            <!-- grid and phone display -->
             <div class="container my-5">
                 <div id="container" class="row">
@@ -59,14 +65,15 @@
                   
                 </div>
               </div>
+              
         </div>
 
         
-
+      
          
     </section>
-
-
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/de83109637.js" crossorigin="anonymous"></script>
     <!-- Javascript file  -->
     <script src="./JS File/app.js"></script>
 </body>
