@@ -199,7 +199,10 @@ document.getElementById('cart-list').addEventListener('click',function(e){
     const cartCount=document.getElementById('count')
     e.target.parentNode.removeChild(e.target)
     count--
-    cartCount.innerText=count
+    if(count=>0)
+    {
+        cartCount.innerText=count
+    }
 })
 
 
