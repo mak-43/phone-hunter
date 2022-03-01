@@ -16,10 +16,10 @@
         <div class="container my-5 text-center"> 
             <h1 class="text-primary ">Gadget Hunter</h1>
             <!-- search  -->
-           <div class="my-4 d-flex container">
+           <div class="my-5 d-flex container search">
                 <input id="user-input" class="form-control me-2 p-3" type="search" placeholder="Search Phone " aria-label="Search">
                 <button  onclick="loadGadget()" class="btn btn-outline-primary p-3" type="submit">Search</button>
-                <img src="./images/shopping-cart.png" onclick="shoppingCart()" id="img" alt="">
+                <img src="./images/shopping-cart.png" onclick="shoppingCart()" class="ms-2" alt="">
                 
                 
            </div>
@@ -55,8 +55,8 @@
 
            <!-- More phones -->
             <div id="showMore"> 
-              <h3 id="result" class="text-danger"></h3>
-              <a href=""id="see-more" class="text-primary">click to see more...</a>
+              <h3 id="result"  class="text-danger "></h3>
+              <a href=""id="see-more" class="text-primary " onclick="loadMore()">click to see more...</a>
             </div>
            <!-- grid and phone display -->
             <div class="container my-5">

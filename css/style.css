@@ -1,11 +1,15 @@
 #spinner{
     display: none;
 }
-#see-more{
+#result,#see-more{
     display: none;
 }
-#img{
+.search{
     height: 50px;
-    width: 50px;
-    margin-left: 10px;
+}
+
+.img:hover{
+    transform: scale(1.1);
+    transition-duration: .5s;
+    
 }

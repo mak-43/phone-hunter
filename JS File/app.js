@@ -22,17 +22,23 @@ const displayPhone=(phones)=>{
     if(phones.length==0){
         alert("Not Found")
     } 
+
     const container=document.getElementById('container');
     container.textContent=''
-    console.log(phones.length)
+    
     const result=document.getElementById('result')
+    const seeMore=document.getElementById('see-more')
     
     if(phones.length>20){
-        result.innerText=`There are ${phones.length-20}  more results`
         
-    }
+        const r=phones.length-20
+        result.innerText=`There are ${r}  more results found`
+        result.style.display='block'
+        seeMore.style.display='block'
 
-    
+
+    }
+   
     phones.slice(0,20).forEach(phone=>{
         const div=document.createElement('div')
     
@@ -40,7 +46,7 @@ const displayPhone=(phones)=>{
         div.innerHTML=`
          
              <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
-                 <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded" alt="...">
+                 <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
                  <div class="card-body">
                      <h5 class="card-title">${phone.phone_name}</h5>
                      <h6 class="card-title">${phone.brand}</h6>
@@ -52,6 +58,8 @@ const displayPhone=(phones)=>{
          `
          container.appendChild(div)
     })
+
+   
 }
 // fetch phone details
 const phoneDetails=(details)=>{
@@ -71,19 +79,19 @@ const displayDetails=(d)=>{
             <div class="modal-dialog">
                 <div class="modal-content shadow p-2  mb-5 bg-body rounded-3">
                     <div class="modal-header text-center mx-auto">
-                        <img src="${d.image}" alt="">
+                        <img class="img" src="${d.image}" alt="">
                     </div>
                     <div class="modal-body">
                         <h5 class="card-title">${d.name}</h5>
                         <p><span class="fw-bold">Released Date: </span>${d.releaseDate?d.releaseDate:"has not been released yet"}</p>
                         <h5 class="text-danger">Main Features</h5>
                         <hr>
-                        <p><span class="fw-bold">Storage: </span> ${d.mainFeatures.memory}</p>
-                        <p><span class="fw-bold">Chipset: </span> ${d.mainFeatures.chipSet}</p>
+                        <p><span class="fw-bold">Storage: </span> ${d.mainFeatures.storage}</p>
+                        <p><span class="fw-bold">Chipset: </span> ${d.mainFeatures?.chipSet?d.mainFeatures.chipSet:"not found"}</p>
                         <p><span class="fw-bold">Display Size: </span> ${d.mainFeatures.displaySize}</p>
-                        <p><span class="fw-bold">Memory: </span> ${d.mainFeatures.memory} </p>
+                        
                         <p><span class="fw-bold">Sensors: </span> ${d.mainFeatures?.sensors?d.mainFeatures.sensors:"No Sensor"} </p>
-                        <h5>Others:</h5>
+                        <h5 class="text-danger">Others:</h5>
                         <hr>
                         <p>WALN:${d.others?.WLAN?d.others.WLAN:'No WALN'}</p>
                         <p>Bluetooth:${d.others?.Bluetooth?d.others.Bluetooth:'No Bluetooth'}</p
@@ -94,8 +102,8 @@ const displayDetails=(d)=>{
                         
                     </div>
                     <div class="modal-footer mx-auto">
-                        <button onclick="close('modal')" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="save('${d.name}')">Add to Cart</button>
+                        <button onclick="close()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="save()">Add to Cart</button>
                     </div>
                 </div>
             </div>  
@@ -113,3 +121,4 @@ const save=(s)=>{
 const close=(c)=>{
     console.log(c)
 }
+
