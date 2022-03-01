@@ -19,6 +19,7 @@ const loadGadget=()=>{
 }
 // display phones 
 const displayPhone=(phones)=>{
+    console.log(phones)
     document.getElementById('user-input').value=''
     document.getElementById('spinner').style.display='none'
     if(phones.length==0){
@@ -31,19 +32,72 @@ const displayPhone=(phones)=>{
     const result=document.getElementById('result')
     const seeMore=document.getElementById('see-more')
     
+    // common 
+    function common(){
+       
+    }
+
     if(phones.length>20){
         
-        const r=phones.length-20
-        result.innerText=`There are ${r}  more results found`
+        console.log(phones.length)
+        
+        result.innerText=`There are ${phones.length-20}  more results found`
         result.style.display='block'
         seeMore.style.display='block'
 
 
+         phones.slice(0,20).forEach(phone=>{
+            const div=document.createElement('div')
+            div.className="col-lg-4 col-md-6 col-12"
+            div.innerHTML=`
+             
+                 <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
+                     <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
+                     <div class="card-body">
+                         <h5 class="card-title">${phone.phone_name}</h5>
+                         <h6 class="card-title">${phone.brand}</h6>
+                         
+                         <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary my-2">Details</button>
+                     </div>
+                 </div>
+             
+             `
+             container.appendChild(div)
+        })
+
+
+       document.getElementById('see-more').addEventListener('click',function(){
+        phones.forEach(phone=>{
+            const div=document.createElement('div')
+            result.style.display='none'
+            seeMore.style.display='none'
+            div.className="col-lg-4 col-md-6 col-12"
+            div.innerHTML=`
+             
+                 <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
+                     <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
+                     <div class="card-body">
+                         <h5 class="card-title">${phone.phone_name}</h5>
+                         <h6 class="card-title">${phone.brand}</h6>
+                         
+                         <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary my-2">Details</button>
+                     </div>
+                 </div>
+             
+             `
+             container.appendChild(div)
+        })
+
+
+       })
+        
     }
+  else{
    
-    phones.slice(0,20).forEach(phone=>{
+   phones.slice(0,20).forEach(phone=>{
         const div=document.createElement('div')
-    
+        result.style.display='none'
+        seeMore.style.display='none'
         div.className="col-lg-4 col-md-6 col-12"
         div.innerHTML=`
          
@@ -60,6 +114,9 @@ const displayPhone=(phones)=>{
          `
          container.appendChild(div)
     })
+    
+   
+  }
 
    
 }

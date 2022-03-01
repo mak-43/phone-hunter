@@ -13,3 +13,14 @@
     transition-duration: .5s;
     
 }
+#cart:hover{
+    transform: scale(1.1);
+    transition-duration: .1s;
+    
+    
+}
+#see-more:hover{
+    transform: scale(1.5);
+    transition-duration: .1s;
+    
+}
