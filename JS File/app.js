@@ -121,12 +121,15 @@ const save=(c)=>{
     const cartCount=document.getElementById('count')
     count++
     cartCount.innerText=count
-    cartStore.push(c)   
+    if(count>=0){
+        cartStore.push(c)
+    }   
 }
 ///add item 
 const cart=()=>{
     const cartList=document.getElementById('cart-list')
     cartList.textContent=''
+    
    for(const i of cartStore){
        const li=document.createElement('li')
        li.innerText=i
@@ -139,12 +142,11 @@ document.getElementById('cart-list').addEventListener('click',function(e){
     const cartCount=document.getElementById('count')
     e.target.parentNode.removeChild(e.target)
     
-    if(cartStore.length>=0){
-        count--
-        cartCount.innerText=count
-        cartStore.pop()
+    cartStore.pop()
+    count--
+    if(count>=0){
+        cartCount.innerText=count 
     }
-   
 })
 
 
