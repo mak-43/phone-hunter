@@ -18,39 +18,24 @@ const loadGadget=()=>{
     }   
 }
 // display phones 
-const displayPhone=(phones)=>{
-    console.log(phones)
+const displayPhone=(phones)=>{ 
     document.getElementById('user-input').value=''
     document.getElementById('spinner').style.display='none'
-    if(phones.length==0){
-        alert("Not Found")
-    } 
-
-    const container=document.getElementById('container');
-    container.textContent=''
-    
     const result=document.getElementById('result')
     const seeMore=document.getElementById('see-more')
-    
-    // common 
-    function common(){
-       
-    }
-
-    if(phones.length>20){
-        
-        console.log(phones.length)
-        
-        result.innerText=`There are ${phones.length-20}  more results found`
-        result.style.display='block'
-        seeMore.style.display='block'
-
-
-         phones.slice(0,20).forEach(phone=>{
+    if(phones.length==0){
+       alert('Result Not Foun')      
+    } 
+    const container=document.getElementById('container');
+    container.textContent='' 
+    // common fucntion
+    function common(number,d){
+        phones.slice(0,number).forEach(phone=>{
             const div=document.createElement('div')
+            result.style.display=d
+            seeMore.style.display=d
             div.className="col-lg-4 col-md-6 col-12"
-            div.innerHTML=`
-             
+            div.innerHTML=`            
                  <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
                      <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
                      <div class="card-body">
@@ -59,66 +44,25 @@ const displayPhone=(phones)=>{
                          
                          <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary my-2">Details</button>
                      </div>
-                 </div>
-             
-             `
+                 </div>  `
              container.appendChild(div)
-        })
-
-
-       document.getElementById('see-more').addEventListener('click',function(){
-        phones.forEach(phone=>{
-            const div=document.createElement('div')
-            result.style.display='none'
-            seeMore.style.display='none'
-            div.className="col-lg-4 col-md-6 col-12"
-            div.innerHTML=`
-             
-                 <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
-                     <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
-                     <div class="card-body">
-                         <h5 class="card-title">${phone.phone_name}</h5>
-                         <h6 class="card-title">${phone.brand}</h6>
-                         
-                         <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary my-2">Details</button>
-                     </div>
-                 </div>
-             
-             `
-             container.appendChild(div)
-        })
-
-
-       })
-        
+        })      
     }
-  else{
-   
-   phones.slice(0,20).forEach(phone=>{
-        const div=document.createElement('div')
-        result.style.display='none'
-        seeMore.style.display='none'
-        div.className="col-lg-4 col-md-6 col-12"
-        div.innerHTML=`
-         
-             <div class="card shadow p-2 mb-5 bg-body rounded-3" style="width: 18rem;">
-                 <img src="${phone.image}" class="card-img-top shadow-sm p-3 mb-5 bg-body rounded img" alt="...">
-                 <div class="card-body">
-                     <h5 class="card-title">${phone.phone_name}</h5>
-                     <h6 class="card-title">${phone.brand}</h6>
-                     
-                     <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary my-2">Details</button>
-                 </div>
-             </div>
-         
-         `
-         container.appendChild(div)
-    })
-    
-   
-  }
-
-   
+    if(phones.length>20)
+    {    
+        result.innerText=`There are ${phones.length-20}  more results found`  
+        //default 20    
+         common(20,'block')
+        //more than 20 
+            document.getElementById('see-more').addEventListener('click',function(){
+            common(phones.length,'none')
+            })       
+    }
+    //less than 20
+  else
+    {
+        common(20,'none')  
+    }  
 }
 // fetch phone details
 const phoneDetails=(details)=>{
@@ -167,42 +111,40 @@ const displayDetails=(d)=>{
                 </div>
             </div>  
        `  
-      
-    modal.appendChild(div) 
-    
+    modal.appendChild(div)    
 }
 // shopping cart 
 let count=0
 const cartStore=[]
-const save=(c)=>{
+const save=(c)=>{  
+   
     const cartCount=document.getElementById('count')
     count++
     cartCount.innerText=count
-    cartStore.push(c)
-    
+    cartStore.push(c)   
 }
-
+///add item 
 const cart=()=>{
     const cartList=document.getElementById('cart-list')
     cartList.textContent=''
    for(const i of cartStore){
        const li=document.createElement('li')
-       li.innerText=i+"---cancel"
+       li.innerText=i
        li.classList.add('item')
-
         cartList.appendChild(li)     
    }  
-   
-
 }
+///delete item from shopping cart
 document.getElementById('cart-list').addEventListener('click',function(e){
     const cartCount=document.getElementById('count')
     e.target.parentNode.removeChild(e.target)
-    count--
-    if(count=>0)
-    {
+    
+    if(cartStore.length>=0){
+        count--
         cartCount.innerText=count
+        cartStore.pop()
     }
+   
 })
 
 

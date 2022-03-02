@@ -14,13 +14,27 @@
     
 }
 #cart:hover{
-    transform: scale(1.1);
-    transition-duration: .1s;
+    transform: scale(1.2);
+    transition-duration: .2s;
+    background-color: rgb(164, 181, 218);
+    border-radius: 20px;
+    padding:1px 5px 1px 1px;
+    margin: 5px;
     
     
 }
 #see-more:hover{
     transform: scale(1.5);
+    transition-duration: .1s;   
+}
+.item:hover::after{
+    transform: scale(1.1);
     transition-duration: .1s;
+    transition-timing-function: ease-in;
+    color:red;
+    font-weight:bold;
+    content: "-Cancel";
+    
     
 }
+
